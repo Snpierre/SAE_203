@@ -16,7 +16,7 @@ if ($formulaire_soumis) {
     ) {
         // On crée une nouvelle entrée
         $creerAuteurCommande = $clientMySQL->prepare(
-            'INSERT INTO auteur(prenom, nom, lien_avatar) VALUES (:prenom, :nom, :lien_avatar)'
+            'INSERT INTO auteur(prenom, nom, lien_avatar,lien_twitter) VALUES (:prenom, :nom, :lien_avatar, :lien_twitter)'
         );
 
         $nom = htmlentities($_POST['nom']);
@@ -30,6 +30,7 @@ if ($formulaire_soumis) {
             'lien_avatar' => $lienAvatar,
             'lien_twitter' => $lienTwitter,
         ]);
+        echo "Création réussite !";
     }
 }
 ?>

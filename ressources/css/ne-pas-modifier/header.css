@@ -46,6 +46,14 @@
   background-color: #ffe700;
 }
 
+.bulle-icone.gris {
+  background-color: #adadad;
+}
+
+.bulle-icone.bleu {
+  background-color: #2e8cff;
+}
+
 .bulle-icone {
   position: absolute;
   top: -46px;
@@ -84,6 +92,13 @@
 
 .bulle-icone-bordure.jaune {
   background-color: #ee8f00;
+}
+.bulle-icone-bordure.gris {
+  background-color: #313131;
+}
+
+.bulle-icone-bordure.bleu {
+  background-color: #0024b6;
 }
 
 .bulle:hover .bulle-icone-bordure {
