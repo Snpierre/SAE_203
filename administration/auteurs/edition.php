@@ -35,7 +35,7 @@ if ($formulaire_soumis) {
         'id' => $_POST['id']
     ]);
     // Redirection vers la page d'accueil d'administration avec un message de validation 
-    header("Location: index.php?message=L'édition à été réaliser avec succès");
+    header("<location:>index.php");
     exit;
 }
 ?>

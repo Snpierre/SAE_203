@@ -17,8 +17,6 @@ $URLCreation = "{$racineURL}/creation.php";
 <head>
     <?php include_once '../ressources/includes/head.php'; ?>
     <title>Liste auteurs - Administration</title>
-
-    
 </head>
 
 <body>
