@@ -10,9 +10,6 @@ $racineURL = $_SERVER['REQUEST_URI'];
 
 $URLCreation = "{$racineURL}/creation.php";
 
-if (isset($_GET['message'])) {
-    $message = $_GET['message'];
-}
 ?>
 
 <!DOCTYPE html>
