@@ -23,16 +23,20 @@ if ($formulaire_soumis) {
     // On crée un nouvel auteur
     $majAuteurCommande = $clientMySQL->prepare("
         UPDATE auteur
-        SET nom = :nom, prenom = :prenom, lien_avatar = :lien_avatar
+        SET nom = :nom, prenom = :prenom, lien_avatar = :lien_avatar, lien_twitter = :lien_twitter
         WHERE id = :id
     ");
 
     $majAuteurCommande->execute([
         'nom' => $_POST['nom'],
-        'prenom' => 'A REMPLACER',
-        'lien_avatar' => 'A REMPLACER',
-        'id' => $_POST['id'],
+        'prenom' =>  $_POST['prenom'],
+        'lien_avatar' =>  $_POST['lien_avatar'],
+        'lien_twitter' =>  $_POST['lien_twitter'],
+        'id' => $_POST['id']
     ]);
+    // Redirection vers la page d'accueil d'administration avec un message de validation 
+    header("Location: index.php?message=L'édition à été réaliser avec succès");
+    exit;
 }
 ?>
 
