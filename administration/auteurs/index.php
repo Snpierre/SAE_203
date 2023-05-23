@@ -9,7 +9,6 @@ $pageCourante = 'auteurs';
 $racineURL = $_SERVER['REQUEST_URI'];
 
 $URLCreation = "{$racineURL}/creation.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -18,38 +17,12 @@ $URLCreation = "{$racineURL}/creation.php";
 <head>
     <?php include_once '../ressources/includes/head.php'; ?>
     <title>Liste auteurs - Administration</title>
-<!-- Pop-up de validalation pour l'édition des paramètres de l'auteur -->
-    <style>
-        .popup {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
+
+    
 </head>
 
 <body>
-    <?php include_once '../ressources/includes/menu-principal.php';
-    if (isset($message)): ?>
-        <div class="popup"><?php echo $message; ?></div>
-        <?php endif; ?>
-
-        <script>
-        // Fonction pour fermer le pop-up
-        function fermerPopup() {
-            var popup = document.getElementById("popup");
-            popup.style.display = "none";
-        }
-
-        // Fermer automatiquement le pop-up après 5 secondes
-        setTimeout(fermerPopup, 5000);
-    </script>
+    <?php include_once '../ressources/includes/menu-principal.php'; ?>
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 justify-between flex">
             <h1 class="text-3xl font-bold text-gray-900">Liste auteurs</h1>
