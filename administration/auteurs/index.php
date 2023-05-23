@@ -44,7 +44,9 @@ $URLCreation = "{$racineURL}/creation.php";
                     <tbody>
                         <?php foreach ($listeAuteurs as $auteur) {
                             $lienEdition = "{$racineURL}/edition.php?id={$auteur['id']}";
-                            $lienSuppression = "{$racineURL}/supprimer.php?id={$auteur['id']}"; ?>
+                            $lienSuppression = "{$racineURL}/suppression.php?id={$auteur['id']}"; 
+                            
+                            ?>
                                 <tr class="hover:bg-gray-100 border-b-2 border-b-gray-100 last:border-b-0 first:border-t-2 first:border-t-gray-200">
                                     <td class="pl-8 p-4 font-bold"><?php echo $auteur[
                                         'id'

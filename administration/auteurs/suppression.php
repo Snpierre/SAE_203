@@ -1,5 +1,5 @@
 <?php
-require_once '../../ressources/includes/connexion-bdd.php';
+require_once ('../../ressources/includes/connexion-bdd.php');
 
 if(isset($_POST["id"])){
 
