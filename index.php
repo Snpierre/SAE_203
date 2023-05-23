@@ -20,6 +20,7 @@ $listeArticles = $listeArticlesCommande->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - SAÉ 203</title>
 
+    <link rel="icon" href="ressources/images/favicon-GEC_400x400px.png" type="image/png">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/reset.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/global.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/header.css">
