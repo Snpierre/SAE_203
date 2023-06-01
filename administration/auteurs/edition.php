@@ -34,8 +34,12 @@ if ($formulaire_soumis) {
         'lien_twitter' =>  $_POST['lien_twitter'],
         'id' => $_POST['id']
     ]);
+    // Affichage du message de confirmation de création d'auteur
+    echo'<div class="flex justify-center items-center">
+        <p class="text-green-500 font-bold">Édition réussite !</p>
+         </div>';
     // Redirection vers la page d'accueil d'administration avec un message de validation 
-    header("<location:>index.php");
+    header("refresh:3;url=http://sae203/administration/auteurs/");
     exit;
 }
 ?>

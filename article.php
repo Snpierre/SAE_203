@@ -26,6 +26,7 @@ $article = $articleCommand->fetch();
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/global.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/header.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/accueil.css">
+    <link rel="icon" href="ressources/images/favicon-GEC_400x400px.png" type="image/png">
 
     <link rel="stylesheet" href="ressources/css/global.css">
     <link rel="stylesheet" href="ressources/css/accueil.css">

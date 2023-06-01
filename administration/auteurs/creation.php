@@ -30,7 +30,14 @@ if ($formulaire_soumis) {
             'lien_avatar' => $lienAvatar,
             'lien_twitter' => $lienTwitter,
         ]);
-        echo "Création réussite !";
+        // Affichage du message de confirmation de création d'auteur
+        echo'<div class="flex justify-center items-center">
+                <p class="text-green-500 font-bold">Création réussie !</p>
+             </div>';
+
+        // Redirection vers la liste des auteurs après 3 secondes
+        header("refresh:3;url=http://sae203/administration/auteurs/");
+        exit();
     }
 }
 ?>
@@ -48,7 +55,7 @@ if ($formulaire_soumis) {
     <?php require_once('../ressources/includes/menu-principal.php'); ?>
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">Créer</h1>
+        <h1 class="text-3xl font-bold text-gray-900">Créer un auteur</h1>
         </div>
     </header>
 
@@ -59,11 +66,11 @@ if ($formulaire_soumis) {
                     <section class="grid gap-6">
                         <div class="col-span-12">
                             <label for="nom" class="block text-lg font-medium text-gray-700">Nom</label>
-                            <input type="text" name="nom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="nom">
+                            <input type="text" name="nom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="nom" required>
                         </div>
                         <div class="col-span-12">
                             <label for="prenom" class="block text-lg font-medium text-gray-700">Prénom</label>
-                            <input type="text" name="prenom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="prenom">
+                            <input type="text" name="prenom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="prenom" required>
                         </div>
                         <div class="col-span-12">
                             <label for="avatar" class="block text-lg font-medium text-gray-700">Lien avatar</label>

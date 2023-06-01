@@ -81,9 +81,9 @@ try {
     
     // On se connecte à notre base de donnée
     $clientMySQL = new PDO(
-        "mysql:host=mysql-sae203site.alwaysdata.net;dbname=sae203site_basededonnes;charset=utf8",
-        '314872',
-        'Sae203motdepasse',
+        "mysql:host={$serveurBDD};dbname={$nomBDD};charset=utf8",
+        getenv('UTILISATEUR_BDD'),
+        getenv('MDP_BDD'),
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
     );
 } catch (Exception $e) {

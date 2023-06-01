@@ -1,3 +1,4 @@
+<link rel="icon" href="ressources/images/favicon-GEC_400x400px.png" type="image/png">
 <nav class="navigation-principale conteneur-1280">
     <ul>
         <li <?php if ($page_active == "index") {
