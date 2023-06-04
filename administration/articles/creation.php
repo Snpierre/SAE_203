@@ -17,11 +17,7 @@ if ($formulaire_soumis) {
     ) {
         // On crée une nouvelle entrée
         $creerArticlecommande = $clientMySQL->prepare(
-            'INSERT INTO article(id, auteur_id, titre, chapo, date_creation) VALUES (:id, :auteur_id, :titre, :chapo, :date_creation)
-             CONCAT(auteur.nom, " ", auteur.prenom) AS auteur_id
-             FROM article AS ar 
-             LEFT JOIN auteur 
-             ON ar.auteur_id = auteur_id'
+            'INSERT INTO article(id, auteur_id, titre, chapo, date_creation) VALUES (:id, :auteur_id, :titre, :chapo, :date_creation)'
              );
 
              $id = htmlentities($_POST['id']);
@@ -80,7 +76,16 @@ if ($formulaire_soumis) {
                         </div>
                         <div class="col-span-12">
                             <label for="auteur_id" class="block text-lg font-medium text-gray-700">Auteur</label>
-                            <input type="text" name="auteur_id" id="auteur_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <input type="number" name="auteur-id" id="auteur-id">
+                            <select name="auteur_od" id="auteur-id">
+                                <?php 
+                                foreach ($auteur_id as $auteur_id){
+                                    ?>
+                                        <option value="<?php $auteur_id["id"];?>"><?php echo $auteur_id?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <button type="submit" class="rounded-md bg-indigo-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-indigo-700">Créer</button>

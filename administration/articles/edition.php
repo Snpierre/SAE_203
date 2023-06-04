@@ -9,23 +9,25 @@ $entree_mise_a_jour = array_key_exists("id", $_GET);
 $article = null;
 if ($entree_mise_a_jour) {
     // On cherche l'article à éditer
-    $commande = $clientMySQL->prepare('SELECT * FROM article WHERE id = :id');
-    $commande->execute([
-        "id" => $_GET["id"]
+    $chercherArticlecommande = $clientMySQL->prepare(
+        'SELECT * FROM article WHERE id = :id'
+    );
+    $chercherArticlecommande->execute([
+        "id" => (int) $_GET["id"]
     ]);
 
-    $article = $commande->fetch();
+    $article = $chercherArticlecommande->fetch();
 }
 
 if ($formulaire_soumis) {
-    // On crée une nouvelle entrée
-    $commande = $clientMySQL->prepare("
+    // On crée un nouvel article
+    $majArticlecommande = $clientMySQL->prepare("
         UPDATE article
         SET titre = :titre, chapo = :chapo, date_creation = :date_creation, auteur_id = :auteur_id, contenu = :contenu
         WHERE id = :id
     ");
 
-    $commande->execute([
+    $majArticlecommande->execute([
         "titre" => $_POST["titre"],
         "chapo" =>  $_POST["chapo"],
         "contenu" =>  $_POST["contenu"],
@@ -33,6 +35,13 @@ if ($formulaire_soumis) {
         "auteur_id" =>  $_POST["auteur_id"],
         "id" => $_POST["id"],
     ]);
+        // Affichage du message de confirmation de création d'auteur
+    echo'<div class="flex justify-center items-center">
+        <p class="text-green-500 font-bold">Édition réussite !</p>
+         </div>';
+    // Redirection vers la page d'accueil d'administration avec un message de validation 
+    header("refresh:3;url=http://sae203/administration/articles/");
+    exit;
 }
 ?>
 
@@ -49,7 +58,7 @@ if ($formulaire_soumis) {
 <?php include_once '../ressources/includes/menu-principal.php'; ?>
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">Editer</h1>
+        <h1 class="text-3xl font-bold text-gray-900">Editer Article</h1>
         </div>
     </header>
     <main>
@@ -94,7 +103,7 @@ if ($formulaire_soumis) {
                                 <label for="auteur_id" class="block text-lg font-medium text-gray-700">Auteur</label>
                                 <input type="text" value="<?php echo $article[
                                     'auteur_id'
-                                ]; ?>" name="auteur" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="auteur_id">
+                                ]; ?>" name="auteur_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="auteur_id">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <button type="submit" class="font-bold rounded-md bg-indigo-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-indigo-700">Éditer</button>

@@ -17,6 +17,6 @@
         <li <?php if ($page_active == "contact") {
                 echo "class='active'";
             } ?>><a href="./contact.php">CONTACT</a></li>
-        <li class="lien-admin"><a href="./administration/auteurs">Administration</a></li>
+        <li class="lien-admin"><a href="./connexion.php">ADMINISTRATION</a></li>
     </ul>
 </nav>

@@ -71,7 +71,7 @@ $URLCreation = "{$racineURL}/creation.php";
                                         <a href="<?php echo $lienEdition; ?>" class='font-bold text-blue-600'>Éditer</a>
                                     </td>
                                     <td class="pl-8 p-4">
-                                        <a href="<?php echo $lienSuppression; ?>" class='font-bold text-blue-600'>Supprimer</a>
+                                        <a href="<?php echo $lienSuppression; ?>" class='font-bold text-red-600'>Supprimer</a>
                                     </td>
                                 </tr>
                         <?php } ?>

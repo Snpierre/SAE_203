@@ -57,7 +57,7 @@ if ($formulaire_soumis) {
     <?php include_once '../ressources/includes/menu-principal.php'; ?>
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4">
-        <h1 class="text-3xl font-bold text-gray-900">Editer</h1>
+        <h1 class="text-3xl font-bold text-gray-900">Editer Auteur</h1>
         </div>
     </header>
     <main>
