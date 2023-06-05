@@ -6,6 +6,9 @@ $pageCourante = 'auteurs';
 $formulaire_soumis = !empty($_POST);
 $entree_mise_a_jour = array_key_exists('id', $_GET);
 
+$editsuccess;
+$editfail;
+
 $auteur = null;
 if ($entree_mise_a_jour) {
     $chercherAuteurCommande = $clientMySQL->prepare(
@@ -34,13 +37,12 @@ if ($formulaire_soumis) {
         'lien_twitter' =>  $_POST['lien_twitter'],
         'id' => $_POST['id']
     ]);
-    // Affichage du message de confirmation de création d'auteur
-    echo'<div class="flex justify-center items-center">
-        <p class="text-green-500 font-bold">Édition réussite !</p>
-         </div>';
-    // Redirection vers la page d'accueil d'administration avec un message de validation 
-    header("refresh:3;url=http://sae203/administration/auteurs/");
-    exit;
+    if($majAuteurCommande->rowCount()>0){
+        $editsuccess="Édition réussite !";
+    }
+    else{
+        $editfail="Erreur d'édition !";
+    }
 }
 ?>
 
@@ -62,9 +64,19 @@ if ($formulaire_soumis) {
     </header>
     <main>
         <div class="mx-auto max-w-7xl py-6">
+            <div class="mb-4 col-md-6">
+                <a href="http://sae203/administration/auteurs/" class="font-bold rounded-md bg-red-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-red-900 relative right">Retour</a>
+            </div>
+            <?php
+                if (isset($editsuccess)) {
+                    echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-green-700 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $editsuccess </section>";
+                } elseif (isset($editfail)) {
+                    echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-red-800 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $editfail </section>";
+                }
+            ?>
             <div class="py-6">
             <?php if ($auteur) { ?>
-                    <form method="POST" action="" class="rounded-lg bg-white p-4 shadow border-gray-300 border-1">
+                    <form method="POST" action="" class=" rounded-lg bg-white p-4 shadow border-gray-300 border-1">
                         <section class="grid gap-6">
                             <input type="hidden" value="<?php echo $auteur[
                                 'id'
@@ -73,17 +85,17 @@ if ($formulaire_soumis) {
                                 <label for="nom" class="block text-lg font-medium text-gray-700">Nom</label>
                                 <input type="text" value="<?php echo $auteur[
                                     'nom'
-                                ]; ?>" name="nom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="nom">
+                                ]; ?>" name="nom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="nom" required>
                             </div>
                             <div class="col-span-12">
                                 <label for="prenom" class="block text-lg font-medium text-gray-700">Prénom</label>
                                 <input type="text" value="<?php echo $auteur[
                                     'prenom'
-                                ]; ?>" name="prenom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="prenom">
+                                ]; ?>" name="prenom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="prenom" required>
                             </div>
                             <div class="col-span-12">
                                 <label for="avatar" class="block text-lg font-medium text-gray-700">Lien avatar</label>
-                                <input type="url" value="<?php echo $auteur['lien_avatar']; ?>" name="lien_avatar" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="avatar">
+                                <input type="url" value="<?php echo $auteur['lien_avatar']; ?>" name="lien_avatar" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="avatar" required>
                                 <div class="text-sm text-gray-500">
                                     Mettre l'URL de l'avatar (chemin absolu)
                                 </div>
@@ -92,7 +104,7 @@ if ($formulaire_soumis) {
                                 <label for="lien_twitter" class="block text-lg font-medium text-gray-700">Lien twitter</label>
                                 <input type="text" value="<?php echo $auteur[
                                     'lien_twitter'
-                                ]; ?>" name="lien_twitter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="lien_twitter">
+                                ]; ?>" name="lien_twitter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="lien_twitter" required>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <button type="submit" class="font-bold rounded-md bg-indigo-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-indigo-700">Éditer</button>

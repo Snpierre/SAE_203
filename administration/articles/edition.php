@@ -6,6 +6,9 @@ $pageCourante = "articles";
 $formulaire_soumis = !empty($_POST);
 $entree_mise_a_jour = array_key_exists("id", $_GET);
 
+$editsuccess;
+$editfail;
+
 $article = null;
 if ($entree_mise_a_jour) {
     // On cherche l'article à éditer
@@ -35,13 +38,12 @@ if ($formulaire_soumis) {
         "auteur_id" =>  $_POST["auteur_id"],
         "id" => $_POST["id"],
     ]);
-        // Affichage du message de confirmation de création d'auteur
-    echo'<div class="flex justify-center items-center">
-        <p class="text-green-500 font-bold">Édition réussite !</p>
-         </div>';
-    // Redirection vers la page d'accueil d'administration avec un message de validation 
-    header("refresh:3;url=http://sae203/administration/articles/");
-    exit;
+    if($majArticlecommande->rowCount()>0){
+        $editsuccess="Édition réussite !";
+    }
+    else{
+        $editfail="Erreur d'édition !";
+    }
 }
 ?>
 
@@ -63,6 +65,16 @@ if ($formulaire_soumis) {
     </header>
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="mb-4 col-md-6">
+            <a href="http://sae203/administration/articles/" class="font-bold rounded-md bg-red-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-red-900 relative right">Retour</a>
+            </div>
+            <?php
+                if (isset($editsuccess)) {
+                    echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-green-700 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $editsuccess </section>";
+                } elseif (isset($editfail)) {
+                    echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-red-800 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $editfail </section>";
+                }
+            ?>
             <div class="py-6">
                 <form method="POST" action="" class="rounded-lg bg-white p-4 shadow border-gray-300 border-1">
                 <section class="grid gap-6">
@@ -114,7 +126,6 @@ if ($formulaire_soumis) {
         </div>
     </main>
     <?php require_once("../ressources/includes/global-footer.php"); ?>
-
 </body>
 
 </html>

@@ -5,6 +5,9 @@ $pageCourante = "articles";
 
 $formulaire_soumis = !empty($_POST);
 
+$creationsuccess;
+$creationfail;
+
 if ($formulaire_soumis) {
     if (
         isset(
@@ -33,6 +36,12 @@ if ($formulaire_soumis) {
             'date_creation' => $date_creation->format('Y-m-d H:i:s'),
             'auteur_id' => $auteur_id,
         ]);
+        if($creerArticlecommande->rowCount()>0){
+            $creationsuccess="Creation réussite !";
+        }
+        else{
+            $creationfail="Erreur de création !";
+        }
     }
 }
 ?>
@@ -55,6 +64,16 @@ if ($formulaire_soumis) {
     </header>
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="mb-4 col-md-6">
+            <a href="http://sae203/administration/articles/" class="font-bold rounded-md bg-red-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-red-900 relative right">Retour</a>
+        </div>
+        <?php
+            if (isset($creationsuccess)) {
+                echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-green-700 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $creationsuccess </section>";
+            } elseif (isset($creationfail)) {
+                 echo "<section class='font-sans font-normal text-lg font-medium text-white rounded-lg bg-red-800 p-2 border-1 text-center transition-all duration-500 transform hover:scale-105'> $creationfail </section>";
+            }
+        ?>
             <div class="py-6">
                 <form method="POST" action="" class="rounded-lg bg-white p-4 shadow border-gray-300 border-1">
                     <section class="grid gap-6">
@@ -76,16 +95,7 @@ if ($formulaire_soumis) {
                         </div>
                         <div class="col-span-12">
                             <label for="auteur_id" class="block text-lg font-medium text-gray-700">Auteur</label>
-                            <input type="number" name="auteur-id" id="auteur-id">
-                            <select name="auteur_od" id="auteur-id">
-                                <?php 
-                                foreach ($auteur_id as $auteur_id){
-                                    ?>
-                                        <option value="<?php $auteur_id["id"];?>"><?php echo $auteur_id?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
+                            <input type="number" name="auteur-id" id="auteur-id"placeholder="Id de l'utilisateur">
                         </div>
                         <div class="mb-3 col-md-6">
                             <button type="submit" class="rounded-md bg-indigo-600 py-2 px-4 text-lg font-medium text-white shadow-sm hover:bg-indigo-700">Créer</button>
