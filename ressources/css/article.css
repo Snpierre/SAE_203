@@ -1,0 +1,131 @@
+.title {
+    color: #ef509f;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
+.line-break {
+    white-space: pre-line;
+}
+
+.line-break-bottom{
+margin-bottom: 30%;
+}
+
+.espace-dessous {
+    margin-bottom: 1rem;
+  }
+  
+.châpo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgb(64, 9, 116);
+    font-family: Arial, sans-serif;
+}
+
+.auteur {
+    font-size: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgb(64, 9, 116);
+    font-family: Arial, sans-serif;
+}
+
+.liste-ancres {
+    border: 1px solid #ef509f;
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: #F9F9F9;
+    width: fit-content;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.liste-ancres a {
+    text-decoration: none;
+    color: #ef509f;
+    font-weight: bold;
+}
+
+.liste-ancres a:hover {
+    color: black;
+}
+
+.liste-ancres li {
+    margin-bottom: 1rem;
+}
+
+.conteneur {
+    margin-left: 200px;
+
+}
+
+.paragraphe {
+    max-width: 800px;
+    
+        font-family: Arial, sans-serif; 
+        font-size: 16px; 
+        line-height: 1.5; 
+        margin-bottom: 20px; 
+        text-align: justify; 
+        color: rgb(64, 9, 116);;
+      }
+      
+
+
+
+.h2 {
+    color: #bd0862;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.liste-axes {
+    list-style: inherit;
+    list-style-position: inside;
+    font-size: 1.05rem;
+    margin-top: -1.25rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ef509f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    position: center;
+    margin-left: 450px;
+
+}
+
+.button:hover {
+    background-color: rgb(64, 9, 116);
+}
+.button a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.button a:hover {
+    color: rgb(255, 255, 255);
+}
+
+.festivalimagefin.jpg {
+    margin: 1rem 0;
+}
+
+.image {
+    width: 500px; 
+    height: auto;
+    margin-left: 350px;
+
+  }

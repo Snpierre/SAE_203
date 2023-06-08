@@ -21,6 +21,7 @@ require_once('./ressources/includes/connexion-bdd.php');
 
     <link rel="stylesheet" href="ressources/css/global.css">
     <link rel="stylesheet" href="ressources/css/a-propos.css">
+    <link rel="stylesheet" href="ressources/css/a-propos2.css">
 </head>
 
 <body>

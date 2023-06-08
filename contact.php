@@ -65,6 +65,7 @@ if ($formulaire_soumis) {
 
     <link rel="stylesheet" href="ressources/css/global.css">
     <link rel="stylesheet" href="ressources/css/contact.css">
+    <link rel="stylesheet" href="ressources/css/contact2.css">
 </head>
 
 <body>

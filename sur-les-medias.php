@@ -14,14 +14,16 @@ $page_active = "medias";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sur les médias - SAÉ 105</title>
+    <link rel="icon" href="ressources/images/logo-cyu-couleur.svg" type="image/x-icon">
 
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/reset.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/global.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/header.css">
-    <link rel="icon" href="ressources/images/favicon-GEC_400x400px.png" type="image/png">
 
     <link rel="stylesheet" href="ressources/css/global.css">
     <link rel="stylesheet" href="ressources/css/sur-les-medias.css">
+    <link rel="stylesheet" href="ressources/css/media2.css">
+
 </head>
 
 <body>

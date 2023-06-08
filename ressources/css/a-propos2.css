@@ -40,7 +40,6 @@
     box-shadow: 0px 3px 6px #00000029;
     flex: 32%;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
 }
 
 .projet:hover {
