@@ -21,7 +21,7 @@ $article = $articleCommand->fetch();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article - SAÉ 203</title>
-    <link rel="icon" href="ressources/images/logo-cyu-couleur.svg" type="image/x-icon">
+    <link rel="icon" href="ressources/images/favicon-GEC_400x400px.png" type="image/png">
 
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/reset.css">
     <link rel="stylesheet" href="ressources/css/ne-pas-modifier/global.css">

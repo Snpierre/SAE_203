@@ -33,6 +33,7 @@ if ($formulaire_soumis) {
             'lien_avatar' => $lienAvatar,
             'lien_twitter' => $lienTwitter,
         ]);
+        //Message de confirmation 
         if($creerAuteurCommande->rowCount()>0){
             $creationsuccess="Creation réussite !";
         }
