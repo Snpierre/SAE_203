@@ -35,6 +35,6 @@
 
     <figure class="logo">
         <!-- Format svg est un format vectoriel, il se charge comme une image normale -->
-        <img src="ressources/images/logo-cyu-couleur.svg" alt="">
+        <img src="ressources/images/logo-cyu-couleur.svg" alt="logo univesitaire de Cy cergy paris université">
     </figure>
 </footer>

@@ -50,6 +50,8 @@ $URLCreation = "{$racineURL}/creation.php";
                             <th class="font-bold pl-8 py-5 text-left">Id</th>
                             <th class="font-bold pl-8 py-5 text-left">Titre</th>
                             <th class="font-bold pl-8 py-5 text-left">Chapô</th>
+                            <th class="font-bold pl-8 py-5 text-left">Contenu</th>
+                            <th class="font-bold pl-8 py-5 text-left">Image</th>
                             <th class="font-bold pl-8 py-5 text-left">Date de création</th>
                             <th class="font-bold pl-8 py-5 text-left">Auteur</th>
                             <th class="pl-8 py-5"></th>
@@ -68,11 +70,22 @@ $URLCreation = "{$racineURL}/creation.php";
                             }
                         ?>
                             <tr class="hover:bg-gray-100 border-b-2 border-b-gray-100 last:border-b-0 first:border-t-2 first:border-t-gray-200">
-                                <td class="pl-8 p-4 font-bold">
-                                    <?php echo $element["id"]; ?>
-                                </td>
+                                <td class="pl-8 p-4 font-bold"><?php echo $element["id"]; ?></td>
                                 <td class="pl-8 p-4"><?php echo $element["titre_article"]; ?></td>
                                 <td class="pl-8 p-4"><?php echo $element["chapo_article"]; ?></td>
+                                <td class="pl-8 p-4"><?php echo $element["contenu_article"]; ?></td>
+                                <td class="pl-8 p-4">
+                                    <div class="w-16 h-16">
+                                        <img 
+                                            class="rounded-full w-full h-full"
+                                            src='<?php echo $element['image_article']; ?>' 
+                                            loading="lazy"
+                                            width='80' 
+                                            height='80' 
+                                            alt='<?php echo "Portrait {$element['image_article']}"; ?>' 
+                                        />
+                                    </div>
+                                </td>
                                 <td class="pl-8 p-4"><?php echo $dateCreation->format('d/m/Y H:i:s'); ?></td>
                                 <td class="pl-8 p-4">
                                     <?php echo $auteurArticle; ?>

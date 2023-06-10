@@ -4,7 +4,7 @@
 ?>
 <article class="projet">
     <figure class="img">
-        <img src="ressources/images/image-article.png" alt="">
+        <img src="ressources/images/image-article.png" alt="Photo noir & blanc d'un rivage de plage">
     </figure>
     <section class='textes'>
         <h2 class="titre">Reportage vidéo SAÉ <?php echo $numSAE; ?></h2>

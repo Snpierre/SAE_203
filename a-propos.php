@@ -53,7 +53,7 @@ require_once('./ressources/includes/connexion-bdd.php');
             </section>
 
             <figure class="img-quebec">
-                <img src="ressources/images/img-quebec.jpeg" alt="">
+                <img src="ressources/images/img-quebec.jpeg" alt="Maison rouge dans une fôret en automne">
             </figure>
 
             <section>

@@ -26,7 +26,7 @@ if ($formulaire_soumis) {
     // On crée un nouvel article
     $majArticlecommande = $clientMySQL->prepare("
         UPDATE article
-        SET titre = :titre, chapo = :chapo, date_creation = :date_creation, auteur_id = :auteur_id, contenu = :contenu
+        SET titre = :titre, chapo = :chapo, date_creation = :date_creation, auteur_id = :auteur_id, contenu = :contenu, image = :image
         WHERE id = :id
     ");
 
@@ -34,6 +34,7 @@ if ($formulaire_soumis) {
         "titre" => $_POST["titre"],
         "chapo" =>  $_POST["chapo"],
         "contenu" =>  $_POST["contenu"],
+        "image" =>  $_POST["image"],
         "date_creation" =>  $_POST["date_creation"],
         "auteur_id" =>  $_POST["auteur_id"],
         "id" => $_POST["id"],
@@ -104,6 +105,12 @@ if ($formulaire_soumis) {
                                 <input type="text" value="<?php echo $article[
                                     'contenu'
                                 ]; ?>" name="contenu" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="contenu">
+                            </div>
+                            <div class="col-span-12">
+                                <label for="image" class="block text-lg font-medium text-gray-700">Image</label>
+                                <input type="url" value="<?php echo $article[
+                                    'image'
+                                ]; ?>" name="image" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="image">
                             </div>
                             <div class="col-span-12">
                                 <label for="date_creation" class="block text-lg font-medium text-gray-700">Date de création</label>
