@@ -49,7 +49,7 @@ $listeArticles = $listeArticlesCommande->fetchAll();
                      -->
                     <a href="article.php?id=<?php echo $article["id"]; ?>" class='article'>
                         <figure>
-                            <img src='ressources/images/image-article.png' alt=''>
+                            <img src='<?php echo $article["image"]?>' alt='image-article'>
                         </figure>
                         <section class='textes'>
                             <h1 class='titre'><?php echo $article["titre"]; ?></h1>

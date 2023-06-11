@@ -4,14 +4,28 @@ $page_active = "index";
 
 require_once('./ressources/includes/connexion-bdd.php');
 
-// à adapter
-$articleCommand = $clientMySQL->prepare('SELECT * FROM article WHERE id = :id');
-$articleCommand->execute([
-    'id' => 2,
-]);
-$article = $articleCommand->fetch();
+// Vérifier si l'ID de l'article est passé en tant que paramètre dans l'URL
+if (isset($_GET['id'])) {
+    // Récupérer l'ID de l'article depuis l'URL
+    $articleID = $_GET['id'];
 
+    // à adapter
+    $articleCommand = $clientMySQL->prepare('SELECT article.*, auteur.lien_avatar, auteur.prenom, auteur.nom FROM article
+    JOIN auteur ON article.auteur_id = auteur.id
+    WHERE article.id = :id');
+    $articleCommand->execute([
+        'id' => $articleID,
+    ]);
+    $article = $articleCommand->fetch();
+} else {
+    // ID de l'article non spécifié, rediriger vers une page d'erreur ou une autre page par défaut
+    header("Location: erreur.php");
+    exit();
+}
+// Fermeture de la connexion à la base de données
+$clientMySQL = null;
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -32,6 +46,7 @@ $article = $articleCommand->fetch();
 
     <link rel="stylesheet" href="ressources/css/global.css">
     <link rel="stylesheet" href="ressources/css/accueil.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -44,63 +59,94 @@ $article = $articleCommand->fetch();
         ?>
 
         <!-- Vous allez principalement écrire votre code HTML ci-dessous -->
+
+        <style>
+         /* Styles Tailwindcss spécifique à la page*/
+        .conteneur-principal {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            color: #ef509f;
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .tout {
+            display: flex;
+            align-items: flex-start;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .image-article {
+            margin-right: 20px;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chapo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgb(64, 9, 116);
+            font-family: Arial, sans-serif;
+            margin-bottom : 15px;
+            margin-top: 15px;
+        }
+
+        .textbox {
+            color: #bd0862;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .auteur {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .prenom-nom {
+            font-size: 14px;
+        }
+        </style>
         <main class="conteneur-principal conteneur-1280">
-           
-<h1 class="title" > Festival MMI: Tente ta chance !</h1>
-<br>
-<br>
-        <p class= "châpo">C’est la fin du semestre montre nous tes réalisations !</p>
-<p class=" châpo">Le festival MMI est un événement unique qui permet à tous les étudiants MMI de France, de partager et de confronter leurs meilleures réalisations au sein de 11 catégories et deux prix spéciaux, emblématiques de la formation MMI.
-</p> 
-<br>
-
-<p class= "auteur line-break espace-dessous">Par Diangou CAMARA le 31 mai 2023</p>
-<br>
-<img src="ressources/images/festivalMMI" alt="" class="image line break">
-<br>
-<br>
-
-
-<section class= "conteneur">
-<h2 class= "h2 line-break">Avis à tous les étudiants MMI de France</h2>
-
-<p class= "paragraphe">Viens prouver ton talent au Festival MMI jusqu'au 12 mai 2023 ! Inscris-toi et poste ton meilleur travail afin de remporter cette édition. Cela peut être un travail de cours ou un travail personnel, peu importe, tant que cela rentre dans une des catégories.</p>
-<img src="" alt="">
-
-</section>
-
-
-
-
-<section class= "conteneur">
-<h2 class= "h2 line-break">Pourquoi y participer ?</h2>
-
-<ul class= "paragraphe liste-axes line-break">
-        <li>82,8% des MMI qui ont participé ont trouvé une alternance en moins de 3 mois et 91% ont été admis en master &#128512;</li>
-        <li>Cela va te permettre d’accroître ta visibilité, d’augmenter tes contacts et de rajouter une ligne impactante sur ton CV</li>
-        <li>Tu gagnes la reconnaissance de tes professeurs</li>
-    </ul>
-</section>
-
-<section class="conteneur">
-<h2 class= "h2 line-break">C’est quoi le Festival MMI ?</h2>
-
-<p class= "paragraphe">Un événement qui permet à tous les étudiants qui participent de se mettre en avant, de partager et de confronter leurs meilleures réalisations au sein des catégories qui seront jugées par un jury composé d’enseignants et de professionnels du métier. (C’est le moment de te faire repérer !!)</p>
-</section>
-
-<section class="conteneur">
-<h2 class= "h2 line-break">Comment t’inscrire ?</h2>
-
-<p class= "paragraphe">Pour participer, tu n’as qu’une seule chose à faire ! C’est de t’inscrire via ce lien et tu pourras ensuite suivre les instructions demandées jusqu’au jour J du concours ! (Easy peasy lemon squeezy !)
-Tu trouveras les détails des instructions dans le règlement
-</p>
-</section>
-
-<section class= "button">
-<a href="https://2023.festivalmmi.fr/inscription.231_duu.html">N’hésite plus et viens tenter ta chance !</p>
-</section>
-
-
+        <h1 class="header"><?php echo $article["titre"]; ?></h1>
+        <img class="image" src="<?php echo $article["image"]?>">
+        <a <?php echo $article["id"]; ?> class='tout'>
+            <section>
+                <p class='chapo'>
+                    <?php echo $article['chapo']; ?>
+                </p>
+                <p class='textbox'>
+                    <?php echo $article["contenu"]; ?>
+                </p>
+                <div class='auteur'>
+                    <img class = "avatar" src='<?php echo $article["lien_avatar"]  ?>' alt='photo-auteur_article'>
+                    <p class="prenom-nom"><?php echo $article["prenom"]." ".$article["nom"]; ?></p>
+                </div>
+            </section>
+            </a>
         </main>
         <?php require_once('./ressources/includes/footer.php'); ?>
     </section>
